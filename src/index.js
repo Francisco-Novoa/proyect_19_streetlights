@@ -15,18 +15,48 @@ import 'popper.js';
 import 'bootstrap';
 
 
-class Home extends Component {
-
-    __constructor(){
-        super();
-        this.state={}
+class Semaforo extends React.Component {
+    //constructor sets up the variable estado
+    constructor(props) {
+        super(props);
+        this.state = { estado: 0 };
     }
-    render (){
-        return(
-            <h1> Proyecto React Vacio</h1>
+
+    handleClick = (e) => {
+        //modifies the variable estado and adds the class encendido that "turns on" the 
+        if(this.state.estado===0){
+            e.target.classList.add("encendido")
+            this.setState({
+                estado:1
+            });
+        }
+        if(this.state.estado===1){
+            e.target.classList.remove("encendido")
+            this.setState({
+                estado:0
+            });
+        }
+    }
+
+
+    render() {
+        return (
+            <div className="container mt-5">
+                <div className="row p-2">
+                    <div className="col plush rounded-circle" id="roja" onClick={this.handleClick}> 
+                    </div>
+                </div>
+                <div className="row p-2">
+                    <div className="col plush rounded-circle" id="amarilla"  onClick={this.handleClick}>
+                    </div>
+                </div>
+                <div className="row p-2">
+                    <div className="col plush rounded-circle" id="verde"  onClick={this.handleClick}>
+                    </div>
+                </div>
+            </div >
         )
     }
 }
- 
 
-ReactDOM.render(<Home />, document.querySelector("#root"));
+ReactDOM.render(<Semaforo />, document.querySelector("#root"))
