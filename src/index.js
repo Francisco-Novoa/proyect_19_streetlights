@@ -38,7 +38,6 @@ class Semaforo extends React.Component {
         }
     }
 
-
     render() {
         return (
             <div className="container mt-5">
