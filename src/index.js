@@ -19,21 +19,47 @@ class Semaforo extends React.Component {
     //constructor sets up the variable estado
     constructor(props) {
         super(props);
-        this.state = { estado: 0 };
+        this.state = { estadoRojo: 0,
+                        estadoAmarillo:0,
+                        estadoVerde:0 };
     }
 
     handleClick = (e) => {
         //modifies the variable estado and adds the class encendido that "turns on" the 
-        if(this.state.estado===0){
+        if(this.state.estadoRojo===0){
             e.target.classList.add("encendido")
             this.setState({
-                estado:1
+                estadoRojo:1
             });
         }
-        if(this.state.estado===1){
+        if(this.state.estadoRojo===1){
             e.target.classList.remove("encendido")
             this.setState({
-                estado:0
+                estadoRojo:0
+            });
+        }
+        if(this.state.estadoVerde===0){
+            e.target.classList.add("encendido")
+            this.setState({
+                estadoVerde:1
+            });
+        }
+        if(this.state.estadoVerde===1){
+            e.target.classList.remove("encendido")
+            this.setState({
+                estadoVerde:0
+            });
+        }
+        if(this.state.estadoAmarillo===0){
+            e.target.classList.add("encendido")
+            this.setState({
+                estadoAmarillo:1
+            });
+        }
+        if(this.state.estadoAmarillo===1){
+            e.target.classList.remove("encendido")
+            this.setState({
+                estadoAmarillo:0
             });
         }
     }
